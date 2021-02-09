@@ -1,63 +1,80 @@
-# work-it-out-tracker 👟
+# Work it out tracker 👟
 
-# Unit 17 NoSQL Homework: Workout Tracker
+## Description
 
-For this assignment, you'll create a workout tracker. You have already been provided with the front end code in the `Develop` folder. This assignment will require you to create Mongo database with a Mongoose schema and handle routes with Express.
+Track your workouts with Fitness Tracker. The app will keep track of every exercise in your workout. The app dashboard will display weekly summary graphs of all workouts done in a week.
+## Installation
 
-## User Story
+1. Clone repository. 
+2. Check in routes/api-routes and comment in block of code if you want the database to be pre-populated with dummy values
+3. npm install
+4. node server.js
 
-* As a user, I want to be able to view create and track daily workouts. I want to be able to log multiple exercises in a workout on a given day. I should also be able to track the name, type, weight, sets, reps, and duration of exercise. If the exercise is a cardio exercise, I should be able to track my distance traveled.
+Running seeders/seed.js is optional to have a pre-populated database.
 
-## Business Context
+## Usage
 
-A consumer will reach their fitness goals more quickly when they track their workout progress.
+### Screenshots
 
-## Acceptance Criteria
+1. Homepage displaying last workout
 
-When the user loads the page, they should be given the option to create a new workout or continue with their last workout.
+![Site](fitnesstracker.PNG)
 
-The user should be able to:
 
-  * Add exercises to the most recent workout plan.
+2. Last Week's Summary
 
-  * Add new exercises to a new workout plan.
+![Site](workoutdashboard.PNG)
 
-  * View the combined weight of multiple exercises from the past seven workouts on the `stats` page.
+### Snippets
 
-  * View the total duration of each workout from the past seven workouts on the `stats` page.
 
-> **Important:** Look into using a MongoDB aggregate function to dynamically add up and return the total duration for each workout. Check out the [MongoDB documentation on the $addFields](https://docs.mongodb.com/manual/reference/operator/aggregation/addFields/), the [MongoDB documentation on the $sum operator](https://docs.mongodb.com/manual/reference/operator/aggregation/sum/), and the [Mongoose documentation on aggregate functions](https://mongoosejs.com/docs/api.html#aggregate_Aggregate) to learn how it can be accomplished.
+1. Adding to an array type
 
-To deploy an application with a MongoDB database to Heroku, you'll need to set up a MongoDB Atlas account and connect a database from there to your application. Be sure to use the following guides for support:
+```javascript
 
-  * [Set Up MongoDB Atlas](../04-Important/MongoAtlas-Setup.md)
+    // add exercise
+    Router.put("/api/workouts/:id", (req, res) => {
+  const id = req.params.id;
+  Workout.findByIdAndUpdate(
+    id,
+    {
+      $push: { exercises: req.body },
+    },
+    { new: true }
+  ).then((workout) => {
+    res.json(workout);
+  });
+});
 
-  * [Deploy with Heroku and MongoDB Atlas](../04-Important/MongoAtlas-Deploy.md)
+    
+```
+* This function will add an exercise to the array of exercises that belong to the workout with the given id. Here we will locate the workout with the given ID and update its fields. We will increase the total duration of the workout by the duration of the exercise being inserted. We will push the exercise to the array of exercises.
 
-## Commit Early and Often
 
-One of the most important skills to master as a web developer is version control. Building the habit of committing via Git is important for the following two reasons:
+## Credits
 
-1. Your commit history is a signal to employers that you are actively working on projects and learning new skills.
+* Tutor 
 
-2. Your commit history allows you to revert your codebase in the event that you need to return to a previous state.
+* Classmates
+### Built With
 
-Follow these guidelines for committing:
+</br>
+<p align="center">
+    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML"><img src="https://img.shields.io/badge/-HTML-orange?style=for-the-badge"  alt="HMTL" /></a>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS"><img src="https://img.shields.io/badge/-CSS-blue?style=for-the-badge" alt="CSS" /></a>
+    <a href="https://www.javascript.com/"><img src="https://img.shields.io/badge/-Javascript-yellow?style=for-the-badge" alt="Javascript" /></a>
+    <a href="https://nodejs.org/en/"><img src="https://img.shields.io/badge/-Node-orange?style=for-the-badge" alt="Node" /></a>
+    <a href="https://www.npmjs.com/package/express"><img src="https://img.shields.io/badge/-Express-blue?style=for-the-badge" alt="Express" /></a>
+    <a href="https://www.mongodb.com/"><img src="https://img.shields.io/badge/-MongoDB-blue?style=for-the-badge" alt="MongoDB" /></a>
+</p>
 
-* Make single-purpose commits for related changes to ensure a clean, manageable history. If you are fixing two issues, make two commits.
+## License
 
-* Write descriptive, meaningful commit messages so that you and anyone else looking at your repository can easily understand its history.
 
-* Don't commit half-done work, for the sake of your collaborators (and your future self!).
+</br>
+<p align="center">
+    <img align="center" src="https://img.shields.io/github/license/kqarlos/fitness-tracker?style=for-the-badge" alt="MIT license" />
+</p>
 
-* Test your application before you commit to ensure functionality at every step in the development process.
+Copyright (c) [2020] [Selena Singleton]
 
-We want you to have well over 200 commits by graduation, so commit early and often!
-
-## Submission on BCS
-
-You are required to submit the following:
-
-* The URL to the deployed application
-
-* The URL to the GitHub repository
