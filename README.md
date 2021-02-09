@@ -2,7 +2,7 @@
 
 ## Description
 
-Track your workouts with Fitness Tracker. The app will keep track of every exercise in your workout. The app dashboard will display weekly summary graphs of all workouts done in a week.
+Track your workouts with Fitness Tracker. The app will keep track of every exercise in your workout. The app dashboard will display weekly summary graphs of all workouts done in a week. 
 ## Installation
 
 1. Clone repository. 
@@ -13,7 +13,6 @@ Track your workouts with Fitness Tracker. The app will keep track of every exerc
 Running seeders/seed.js is optional to have a pre-populated database.
 
 ## Usage
-
 ### Screenshots
 
 1. Homepage displaying last workout
@@ -24,6 +23,9 @@ Running seeders/seed.js is optional to have a pre-populated database.
 2. Last Week's Summary
 
 ![Site](workoutdashboard.PNG)
+
+
+Please check out the launched app on Heroku [here](https://still-bayou-21852.herokuapp.com/)!
 
 ### Snippets
 
