@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Mongoose connect to deploy into Heroku
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+mongoose.connect(process.env.MONGODB_URI || "https://git.heroku.com/still-bayou-21852", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
